@@ -12,7 +12,7 @@ public class ChemicalElement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ceid", length = 6, nullable = false)
-    private Integer id;
+    private Integer ceid;
 
     @Column(name = "name")
     private String name;
@@ -51,12 +51,12 @@ public class ChemicalElement {
 
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getCeid() {
+        return ceid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCeid(Integer ceid) {
+        this.ceid = ceid;
     }
 
     public String getName() {

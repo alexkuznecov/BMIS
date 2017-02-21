@@ -10,9 +10,9 @@ public interface ChemicalElementDao {
 
     List<ChemicalElement> findAllChemicalElement();
 
-    void deleteChemicalElementById(Integer id);
+    void deleteChemicalElementById(Integer ceid);
 
-    ChemicalElement findById(Integer id);
+    ChemicalElement findById(Integer ceid);
 
     void updateChemicalElement(ChemicalElement chemicalElement);
 

@@ -29,16 +29,16 @@ public class ChemicalElementDaoImpl extends AbstractDao implements ChemicalEleme
     }
 
     @Override
-    public void deleteChemicalElementById(Integer id) {
-        Query query = getSession().createSQLQuery("delete from ChemicalElements where id = :id");
-        query.setInteger("id", id);
+    public void deleteChemicalElementById(Integer ceid) {
+        Query query = getSession().createSQLQuery("delete from ChemicalElements where ceid = :ceid");
+        query.setInteger("ceid", ceid);
         query.executeUpdate();
     }
 
     @Override
-    public ChemicalElement findById(Integer id) {
+    public ChemicalElement findById(Integer ceid) {
         Criteria criteria = getSession().createCriteria(ChemicalElement.class);
-        criteria.add(Restrictions.eq("id",id));
+        criteria.add(Restrictions.eq("ceid",ceid));
         return (ChemicalElement) criteria.uniqueResult();
     }
 

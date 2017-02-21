@@ -1,8 +1,6 @@
 package by.grsu.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by alek on 21.2.17.
@@ -10,6 +8,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Material_has_ElementSource")
 public class MaterialHasElementSource {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
     @Column(name = "bmid")
     private Integer bmid;

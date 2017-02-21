@@ -26,7 +26,7 @@ public class ResearchPassport {
     @Column(name = "rmid")
     private Integer rmid;
 
-    @Column(name = "rmid")
+    @Column(name = "roid")
     private Integer roid;
 
     public ResearchPassport() {

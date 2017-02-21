@@ -27,7 +27,7 @@ public class BuildingMaterial {
     private String mechanicalStress;
 
     @Column(name = "made_year")
-    private  Integer year;
+    private  String year;
 
     @Column(name = "spectr_file")
     private String spectrFile;
@@ -82,11 +82,11 @@ public class BuildingMaterial {
         this.mechanicalStress = mechanicalStress;
     }
 
-    public Integer getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(Integer year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

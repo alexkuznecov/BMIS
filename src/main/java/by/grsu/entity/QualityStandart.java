@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by alek on 20.2.17.
  */
 @Entity
-@Table(name = "SpectrLineLibrary")
+@Table(name = "QualityStandart")
 public class QualityStandart {
 
     @Id

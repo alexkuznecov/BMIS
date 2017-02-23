@@ -24,12 +24,12 @@ public class ResearchObjectTypeDaoImpl extends AbstractDao implements ResearchOb
     }
 
     @Override
-    public void deleteResearchObjectTypeById(Integer mgid) {
+    public void deleteResearchObjectTypeById(Integer rotid) {
 
     }
 
     @Override
-    public ResearchObjectType findById(Integer mgid) {
+    public ResearchObjectType findById(Integer rotid) {
         return null;
     }
 

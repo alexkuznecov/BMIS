@@ -11,8 +11,8 @@ public class ResearchObjectType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mgid", length = 6, nullable = false)
-    private Integer mgid;
+    @Column(name = "rotid", length = 6, nullable = false)
+    private Integer rotid;
 
     @Column(name = "name")
     private String name;
@@ -21,12 +21,12 @@ public class ResearchObjectType {
 
     }
 
-    public Integer getMgid() {
-        return mgid;
+    public Integer getRotid() {
+        return rotid;
     }
 
-    public void setMgid(Integer mgid) {
-        this.mgid = mgid;
+    public void setRotid(Integer rotid) {
+        this.rotid = rotid;
     }
 
     public String getName() {

@@ -32,8 +32,8 @@ public class BuildingMaterial {
     @Column(name = "spectr_file")
     private String spectrFile;
 
-    @Column(name = "mgid")
-    private Integer mgid;
+    @Column(name = "rotid")
+    private Integer rotid;
 
     @Column(name = "mnfid")
     private Integer mnfid;

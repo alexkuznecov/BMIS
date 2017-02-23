@@ -13,9 +13,9 @@ public interface ResearchObjectTypeDao {
 
     List<ResearchObjectType> findAllResearchObjectTypes();
 
-    void deleteResearchObjectTypeById(Integer mgid);
+    void deleteResearchObjectTypeById(Integer rotid);
 
-    ResearchObjectType findById(Integer mgid);
+    ResearchObjectType findById(Integer rotid);
 
     void updateResearchObjectType(ResearchObjectType researchObjectType);
 

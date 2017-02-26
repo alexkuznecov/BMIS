@@ -17,6 +17,9 @@ public class ChemicalElement {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "symbol")
+    private String symbol;
+
     @Column(name = "atomic_weight")
     private String atomicWeight;
 
@@ -65,6 +68,14 @@ public class ChemicalElement {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     public String getAtomicWeight() {

@@ -24,7 +24,7 @@ public class ChemicalElement {
     private String atomicWeight;
 
     @Column(name = "atomic_number")
-    private Integer atomicNumber;
+    private String atomicNumber;
 
     @Column(name = "description")
     private String description;
@@ -33,10 +33,10 @@ public class ChemicalElement {
     private String ions;
 
     @Column(name = "group_number")
-    private Integer groupNumber;
+    private String groupNumber;
 
     @Column(name = "period")
-    private Integer period;
+    private String period;
 
     @Column(name = "density")
     private String density;
@@ -86,11 +86,11 @@ public class ChemicalElement {
         this.atomicWeight = atomicWeight;
     }
 
-    public Integer getAtomicNumber() {
+    public String getAtomicNumber() {
         return atomicNumber;
     }
 
-    public void setAtomicNumber(Integer atomicNumber) {
+    public void setAtomicNumber(String atomicNumber) {
         this.atomicNumber = atomicNumber;
     }
 
@@ -110,19 +110,19 @@ public class ChemicalElement {
         this.ions = ions;
     }
 
-    public Integer getGroupNumber() {
+    public String getGroupNumber() {
         return groupNumber;
     }
 
-    public void setGroupNumber(Integer groupNumber) {
+    public void setGroupNumber(String groupNumber) {
         this.groupNumber = groupNumber;
     }
 
-    public Integer getPeriod() {
+    public String getPeriod() {
         return period;
     }
 
-    public void setPeriod(Integer period) {
+    public void setPeriod(String period) {
         this.period = period;
     }
 

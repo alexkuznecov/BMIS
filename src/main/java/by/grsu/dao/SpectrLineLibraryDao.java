@@ -1,5 +1,7 @@
 package by.grsu.dao;
 
+import by.grsu.entity.SpectrLineLibrary;
+
 import java.util.List;
 
 /**
@@ -7,14 +9,14 @@ import java.util.List;
  */
 public interface SpectrLineLibraryDao {
 
-    void saveSpectrLineLibrary(SpectrLineLibraryDao spectrLineLibrary);
+    void saveSpectrLineLibrary(SpectrLineLibrary spectrLineLibrary);
 
-    List<SpectrLineLibraryDao> findAllSpectrLineLibrarys();
+    List<SpectrLineLibrary> findAllSpectrLineLibrarys();
 
     void deleteSpectrLineLibraryById(Integer sllid);
 
-    SpectrLineLibraryDao findById(Integer sllid);
+    SpectrLineLibrary findById(Integer sllid);
 
-    void updateSpectrLineLibrary(SpectrLineLibraryDao spectrLineLibrary);
+    void updateSpectrLineLibrary(SpectrLineLibrary spectrLineLibrary);
 
 }

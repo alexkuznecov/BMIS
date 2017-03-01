@@ -30,7 +30,7 @@ public class ChemicalElementDaoImpl extends AbstractDao implements ChemicalEleme
 
     @Override
     public void deleteChemicalElementById(Integer ceid) {
-        Query query = getSession().createSQLQuery("delete from ChemicalElements where ceid = :ceid");
+        Query query = getSession().createSQLQuery("delete from ChemicalElement where ceid = :ceid");
         query.setInteger("ceid", ceid);
         query.executeUpdate();
     }

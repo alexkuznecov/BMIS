@@ -3,6 +3,9 @@ package by.grsu.dao.impl;
 import by.grsu.dao.AbstractDao;
 import by.grsu.dao.ResearchPassportDao;
 import by.grsu.entity.ResearchPassport;
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,26 +18,32 @@ public class ResearchPassprotDaoImpl extends AbstractDao implements ResearchPass
 
     @Override
     public void saveResearchPassport(ResearchPassport researchPassport) {
-
+        persist(researchPassport);
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<ResearchPassport> findAllResearchPassports() {
-        return null;
+        Criteria criteria = getSession().createCriteria(ResearchPassport.class);
+        return (List<ResearchPassport>) criteria.list();
     }
 
     @Override
     public void deleteResearchPassportById(Integer rpid) {
-
+        Query query = getSession().createSQLQuery("delete from ResearchPassport where rpid = :rpid");
+        query.setInteger("rpid", rpid);
+        query.executeUpdate();
     }
 
     @Override
     public ResearchPassport findById(Integer rpid) {
-        return null;
+        Criteria criteria = getSession().createCriteria(ResearchPassport.class);
+        criteria.add(Restrictions.eq("rpid",rpid));
+        return (ResearchPassport) criteria.uniqueResult();
     }
 
     @Override
     public void updateResearchPassport(ResearchPassport researchPassport) {
-
+        getSession().update(researchPassport);
     }
 }

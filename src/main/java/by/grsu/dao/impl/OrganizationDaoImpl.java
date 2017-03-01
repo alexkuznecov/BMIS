@@ -30,7 +30,7 @@ public class OrganizationDaoImpl extends AbstractDao implements OrganizationDao 
 
     @Override
     public void deleteOrganizationById(Integer oid) {
-        Query query = getSession().createSQLQuery("delete from Material where oid = :oid");
+        Query query = getSession().createSQLQuery("delete from Organization where oid = :oid");
         query.setInteger("oid", oid);
         query.executeUpdate();
     }

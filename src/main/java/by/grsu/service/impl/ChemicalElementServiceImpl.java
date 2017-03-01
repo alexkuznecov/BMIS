@@ -22,6 +22,13 @@ public class ChemicalElementServiceImpl implements ChemicalElementService {
         dao.saveChemicalElement(chemicalElement);
     }
 
+    @Override
+    public void saveChemicalElements(List<ChemicalElement> chemicalElements) {
+        for (int i = 0; i < chemicalElements.size(); i++) {
+            dao.saveChemicalElement(chemicalElements.get(i));
+        }
+    }
+
     public List<ChemicalElement> findAllChemicalElement() {
         return dao.findAllChemicalElement();
     }

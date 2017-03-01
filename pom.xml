@@ -17,6 +17,7 @@
         <hb.manager>5.1.0.Final</hb.manager>
         <spring.test>4.3.5.RELEASE</spring.test>
         <junit.version>4.12</junit.version>
+        <ocsv.version>3.8</ocsv.version>
     </properties>
 
     <dependencies>
@@ -75,6 +76,26 @@
             <artifactId>spring-test</artifactId>
             <version>RELEASE</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>${ocsv.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+
 
     </dependencies>
     <build>

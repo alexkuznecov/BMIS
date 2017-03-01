@@ -11,6 +11,12 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -20,8 +26,9 @@ import java.util.Properties;
  * Created by alek on 15.2.17.
  */
 @Configuration
+@EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan({ "by.grsu.configuration" })
+@ComponentScan({ "by.grsu" })
 @PropertySource(value = { "classpath:application.properties" })
 public class HibernateConfiguration {
 

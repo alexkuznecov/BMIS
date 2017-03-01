@@ -19,6 +19,6 @@ public class StartApplicationTest {
 
     @Test
     public void testTempMethod() {
-        System.out.println(chemicalElementService.getAll());
+        System.out.println(chemicalElementService.findById(3));
     }
 }

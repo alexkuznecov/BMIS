@@ -11,6 +11,8 @@ public interface ChemicalElementService {
 
     void saveChemicalElement(ChemicalElement chemicalElement);
 
+    void saveChemicalElements(List<ChemicalElement> chemicalElements);
+
     List<ChemicalElement> findAllChemicalElement();
 
     void deleteChemicalElementById(Integer id);

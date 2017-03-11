@@ -46,4 +46,55 @@ public class MaterialDaoImpl extends AbstractDao implements MaterialDao {
     public void updateMaterial(Material material) {
         getSession().update(material);
     }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Material> getByVariableParameters(String name, String probeDate, String probePlace, String description, Integer paramCount) {
+        StringBuilder queryParameters = new StringBuilder("select * from Material where ");
+        if (!name.equals("")) {
+            queryParameters.append("name = :name");
+            paramCount --;
+            if (paramCount != 0) {
+                queryParameters.append(" and ");
+            }
+        }
+        if (!probeDate.equals("")) {
+            queryParameters.append("probe_date = :probeDate");
+            paramCount --;
+            if (paramCount != 0) {
+                queryParameters.append(" and ");
+            }
+        }
+        if (!probePlace.equals("")) {
+            queryParameters.append("probe_place = :probePlace");
+            paramCount --;
+            if (paramCount != 0) {
+                queryParameters.append(" and ");
+            }
+        }
+        if (!description.equals("")) {
+            queryParameters.append("description = :description");
+            paramCount --;
+            if (paramCount != 0) {
+                queryParameters.append(" and ");
+            }
+        }
+
+        Query query = getSession().createSQLQuery(queryParameters.toString()).addEntity(Material.class);
+
+        if (!name.equals("")) {
+            query.setParameter("name", name);
+        }
+        if (!probeDate.equals("")) {
+            query.setParameter("probeDate", probeDate);
+        }
+        if (!probePlace.equals("")) {
+            query.setParameter("probePlace", probePlace);
+        }
+        if (!description.equals("")) {
+            query.setParameter("description", description);
+        }
+
+        return (List<Material>) query.list();
+    }
 }

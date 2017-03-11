@@ -17,7 +17,7 @@ import java.util.List;
 public class ChemicalElementController {
 
     @Autowired
-    ChemicalElementService chemicalElementService;
+    private ChemicalElementService chemicalElementService;
 
     /**
      * Controller

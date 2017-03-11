@@ -19,4 +19,6 @@ public interface MaterialDao {
 
     void updateMaterial(Material material);
 
+    List<Material> getByVariableParameters(String name, String probeDate, String probePlace, String description, Integer paramCount);
+
 }

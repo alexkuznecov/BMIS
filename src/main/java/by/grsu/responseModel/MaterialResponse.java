@@ -1,4 +1,4 @@
-package by.grsu.responceModel;
+package by.grsu.responseModel;
 
 /**
  * Created by alek on 8.3.17.

@@ -12,4 +12,6 @@ public interface MaterialService {
 
     List<MaterialResponse> getByFilter(String name, String probDate, String probPlace, String description, Integer paramCount);
 
+    List<MaterialResponse> getAllMaterials();
+
 }

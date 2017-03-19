@@ -26,4 +26,8 @@ public class MaterialServiceImpl implements MaterialService {
         List<Material> materials = materialDao.getByVariableParameters(name, probDate, probPlace, description, paramCount);
         return MaterialConverter.convertToMaterialResponse(materials);
     }
+
+    public List<MaterialResponse> getAllMaterials() {
+        return MaterialConverter.convertToMaterialResponse(materialDao.findAllMaterials());
+    }
 }

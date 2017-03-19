@@ -13,6 +13,11 @@ Query: /getChemicalElements<br/>
 Response example :<br/>
 Some how in previous but many ^).<br/>
 
+Query : /materials/all<br/>
+<br/>
+Query: /materials/filters?name=Бетон<br/>
+<br/>
+
 
 </body>
 </html>

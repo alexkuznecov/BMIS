@@ -5,6 +5,7 @@ import by.grsu.enums.MaterialFilter;
 import by.grsu.responseModel.MaterialResponse;
 import by.grsu.service.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,11 +17,17 @@ import java.util.Map;
  * Created by alek on 9.3.17.
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/materials")
 public class MaterialController {
 
     @Autowired
     private MaterialService materialService;
+
+    @RequestMapping("/all")
+    public List<MaterialResponse> getAll() {
+        return materialService.getAllMaterials();
+    }
 
     @RequestMapping("/filters")
     public List<MaterialResponse> filter(@RequestParam Map<String, String> filters) {

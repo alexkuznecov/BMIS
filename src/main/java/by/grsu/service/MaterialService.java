@@ -1,6 +1,5 @@
 package by.grsu.service;
 
-import by.grsu.enums.MaterialFilter;
 import by.grsu.responseModel.MaterialResponse;
 
 import java.util.List;

@@ -46,4 +46,11 @@ public class ManufacturerDaoImpl extends AbstractDao implements ManufacturerDao 
     public void updateManufacturer(Manufacturer manufacturer) {
         getSession().update(manufacturer);
     }
+
+    @Override
+    public Integer getIdByName(String name) {
+        Query query = getSession().createSQLQuery("select mnfid from Manufactorer where name = :name");
+        query.setString("name", name);
+        return query.getFirstResult();
+    }
 }

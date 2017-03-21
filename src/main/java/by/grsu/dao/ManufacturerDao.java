@@ -17,6 +17,8 @@ public interface ManufacturerDao {
 
     Manufacturer findById(Integer mnfid);
 
+    Integer getIdByName(String name);
+
     void updateManufacturer(Manufacturer manufacturer);
 
 }

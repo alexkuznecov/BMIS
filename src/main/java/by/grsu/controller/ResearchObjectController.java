@@ -1,8 +1,8 @@
 package by.grsu.controller;
 
 import by.grsu.enums.Filter;
-import by.grsu.responseModel.MaterialResponse;
-import by.grsu.service.MaterialService;
+import by.grsu.responseModel.ResearchObjectResponse;
+import by.grsu.service.ResearchObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,37 +13,37 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by alek on 9.3.17.
+ * Created by alek on 19.3.17.
  */
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/materials")
-public class MaterialController {
+@RequestMapping("/resobjects")
+public class ResearchObjectController {
 
     @Autowired
-    private MaterialService materialService;
+    private ResearchObjectService researchObjectService;
 
     @RequestMapping("/all")
-    public List<MaterialResponse> getAll() {
-        return materialService.getAllMaterials();
+    public List<ResearchObjectResponse> getAll() {
+        return researchObjectService.getAllResearchObjects();
     }
 
     @RequestMapping("/filters")
-    public List<MaterialResponse> filter(@RequestParam Map<String, String> filters) {
+    public List<ResearchObjectResponse> getByFilters(@RequestParam Map<String, String> filters) {
         try {
-            String name = "", probDate = "", probPlace = "", description = "";
+            String name = "", organizationName = "", date = "", description = "";
             Integer paramCount = 0;
             for (Map.Entry<String, String> filter : filters.entrySet()) {
                 if (Filter.NAME.toString().equals(filter.getKey().toUpperCase())) {
                     name = filter.getValue();
                     paramCount ++;
                 }
-                if (Filter.PROBEDATE.toString().equals(filter.getKey().toUpperCase())) {
-                    probDate = filter.getValue();
+                if (Filter.ORGANIZATIONNAME.toString().equals(filter.getKey().toUpperCase())) {
+                    organizationName = filter.getValue();
                     paramCount ++;
                 }
-                if (Filter.PROBEPLACE.toString().equals(filter.getKey().toUpperCase())) {
-                    probPlace = filter.getValue();
+                if (Filter.DATE.toString().equals(filter.getKey().toUpperCase())) {
+                    date = filter.getValue();
                     paramCount ++;
                 }
                 if (Filter.DESCRIPTION.toString().equals(filter.getKey().toUpperCase())) {
@@ -51,15 +51,9 @@ public class MaterialController {
                     paramCount ++;
                 }
             }
-            return materialService.getByFilter(name, probDate, probPlace, description, paramCount);
+            return researchObjectService.getByFilter(name, organizationName, date, description, paramCount);
         } catch (Exception e) {
             return null;
         }
-
-    }
-
-    @RequestMapping("/gethello")
-    public String getHello(@RequestParam Map<String, String> params) {
-        return "Hello";
     }
 }

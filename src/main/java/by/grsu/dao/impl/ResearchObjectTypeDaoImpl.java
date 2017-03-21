@@ -46,4 +46,11 @@ public class ResearchObjectTypeDaoImpl extends AbstractDao implements ResearchOb
     public void updateResearchObjectType(ResearchObjectType researchObjectType) {
         getSession().update(researchObjectType);
     }
+
+    @Override
+    public Integer getIdByName(String name) {
+        Query query = getSession().createSQLQuery("select rotid from Manufactorer where name = :name");
+        query.setString("name", name);
+        return query.getFirstResult();
+    }
 }

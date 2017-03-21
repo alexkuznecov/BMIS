@@ -43,9 +43,16 @@ public class BuildingMaterialDaoImpl extends AbstractDao implements BuildingMate
     }
 
     @Override
+    public Integer getIdByName(String name) {
+        Query query = getSession().createSQLQuery("select bmid from BuildingMaterial where short_name = :name");
+        query.setString("name", name);
+        return query.getFirstResult();
+    }
+
+    @Override
     @SuppressWarnings("unchecked")
     public List<BuildingMaterial> getByVariableParameters(String name, String creationDate, Integer manufacturerId, Integer researchObjectTypeId, Integer paramCount) {
-        StringBuilder queryParameters = new StringBuilder("select * from Material where ");
+        StringBuilder queryParameters = new StringBuilder("select * from BuildingMaterial where ");
         if (!name.equals("")) {
             queryParameters.append("name like :name");
             paramCount --;

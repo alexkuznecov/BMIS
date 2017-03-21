@@ -17,6 +17,8 @@ public interface ResearchObjectDao {
 
     ResearchObject findById(Integer roid);
 
+    List<ResearchObject> getByVariableParameters(String name, Integer organizationId, String date, String description, Integer paramCount);
+
     void updateResearchObject(ResearchObject researchObject);
 
 }

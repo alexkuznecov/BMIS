@@ -36,6 +36,13 @@ public class ResearchPassprotDaoImpl extends AbstractDao implements ResearchPass
     }
 
     @Override
+    public Integer getIdByIntencity(String intensity) {
+        Query query = getSession().createSQLQuery("select rpid from ResearchPassport where intensity = :intensity");
+        query.setString("intensity", intensity);
+        return query.getFirstResult();
+    }
+
+    @Override
     public ResearchPassport findById(Integer rpid) {
         Criteria criteria = getSession().createCriteria(ResearchPassport.class);
         criteria.add(Restrictions.eq("rpid",rpid));

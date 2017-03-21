@@ -17,6 +17,8 @@ public interface SpectrDao {
 
     Spectr findById(Integer spcid);
 
+    List<Spectr> getByVariableParameters(String waveLength, Integer researchPassportId, Integer chemicalElementId, Integer spectrLineId, Integer paramCount);
+
     void updateSpectr(Spectr spectr);
 
 }

@@ -17,6 +17,8 @@ public interface EthalonSpectrDao {
 
     EthalonSpectr findById(Integer etsid);
 
+    List<EthalonSpectr> getByVariableParameters(String waveLength, Integer buildMaterialId, Integer materialId, Integer chemicalElementId,  Integer spectrLineId, Integer paramCount);
+
     void updateEthalonSpectr(EthalonSpectr ethalonSpectr);
 
 }

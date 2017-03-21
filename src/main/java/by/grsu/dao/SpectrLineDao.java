@@ -17,6 +17,8 @@ public interface SpectrLineDao {
 
     SpectrLine findById(Integer slid);
 
+    Integer getIdByName(String name);
+
     void updateSpectrLine(SpectrLine spectrLine);
 
 }

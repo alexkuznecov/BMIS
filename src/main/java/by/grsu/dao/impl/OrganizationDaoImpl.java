@@ -36,6 +36,13 @@ public class OrganizationDaoImpl extends AbstractDao implements OrganizationDao 
     }
 
     @Override
+    public Integer getIdByName(String name) {
+        Query query = getSession().createSQLQuery("select oid from Organization where full_title = :name");
+        query.setString("name", name);
+        return query.getFirstResult();
+    }
+
+    @Override
     public Organization findById(Integer oid) {
         Criteria criteria = getSession().createCriteria(Organization.class);
         criteria.add(Restrictions.eq("oid",oid));

@@ -19,6 +19,8 @@ public interface BuildingMaterialDao {
 
     void updateBuildingMaterial(BuildingMaterial buildingMaterial);
 
+    Integer getIdByName(String name);
+
     List<BuildingMaterial> getByVariableParameters(String name, String creationDate, Integer manufacturerId, Integer researchObjectTypeId, Integer paramCount);
 
 }

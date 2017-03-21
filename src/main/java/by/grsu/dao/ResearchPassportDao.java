@@ -17,6 +17,8 @@ public interface ResearchPassportDao {
 
     ResearchPassport findById(Integer rpid);
 
+    Integer getIdByIntencity(String intensity);
+
     void updateResearchPassport(ResearchPassport researchPassport);
 
 }

@@ -97,4 +97,20 @@ public class BuildingMaterial {
     public void setSpectrFile(String spectrFile) {
         this.spectrFile = spectrFile;
     }
+
+    public Integer getRotid() {
+        return rotid;
+    }
+
+    public void setRotid(Integer rotid) {
+        this.rotid = rotid;
+    }
+
+    public Integer getMnfid() {
+        return mnfid;
+    }
+
+    public void setMnfid(Integer mnfid) {
+        this.mnfid = mnfid;
+    }
 }

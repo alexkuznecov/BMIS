@@ -43,6 +43,14 @@ public class MaterialDaoImpl extends AbstractDao implements MaterialDao {
     }
 
     @Override
+    public Integer getIdByName(String name) {
+        Query query = getSession().createSQLQuery("select mid from Material where name = :name");
+        query.setString("name", name);
+        return query.getFirstResult();
+    }
+
+
+    @Override
     public void updateMaterial(Material material) {
         getSession().update(material);
     }

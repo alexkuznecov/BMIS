@@ -43,6 +43,13 @@ public class SpectrLineDaoImpl extends AbstractDao implements SpectrLineDao{
     }
 
     @Override
+    public Integer getIdByName(String name) {
+        Query query = getSession().createSQLQuery("select slid from SpectrLine where person_name = :name");
+        query.setString("name", name);
+        return query.getFirstResult();
+    }
+
+    @Override
     public void updateSpectrLine(SpectrLine spectrLine) {
         getSession().update(spectrLine);
     }

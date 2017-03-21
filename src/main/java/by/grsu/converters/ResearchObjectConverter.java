@@ -1,8 +1,10 @@
 package by.grsu.converters;
 
+import by.grsu.dao.OrganizationDao;
 import by.grsu.entity.ResearchObject;
 import by.grsu.responseModel.ResearchObjectResponse;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,9 +12,19 @@ import java.util.List;
  */
 public class ResearchObjectConverter {
 
-    public static List<ResearchObjectResponse> convertToResearchObjectResponse(List<ResearchObject> researchObjects) {
+    public static List<ResearchObjectResponse> convertToResearchObjectResponse(List<ResearchObject> researchObjects, OrganizationDao organizationDao) {
 
-        return null;
+        List<ResearchObjectResponse> researchObjectResponses = new ArrayList<>();
+
+        for (ResearchObject researchObject : researchObjects) {
+            ResearchObjectResponse researchObjectResponse = new ResearchObjectResponse();
+            researchObjectResponse.setName(researchObject.getName());
+            researchObjectResponse.setDescription(researchObject.getDescription());
+            researchObjectResponse.setDate(researchObject.getDate());
+            researchObjectResponse.setOrganizationName(organizationDao.findById(researchObject.getOid()).getFullTitle());
+            researchObjectResponses.add(researchObjectResponse);
+        }
+        return researchObjectResponses;
 
     }
 

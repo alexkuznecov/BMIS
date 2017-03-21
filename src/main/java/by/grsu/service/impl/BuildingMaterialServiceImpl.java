@@ -39,7 +39,8 @@ public class BuildingMaterialServiceImpl implements BuildingMaterialService {
             researchObjectId = researchObjectTypeDao.getIdByName(researchObjectTypeName);
         }
 
-        return BuildingMaterialConverter.convertToBuildingMaterialResponse(buildingMaterialDao.getByVariableParameters(name, creationDate, manufacturerId, researchObjectId, paramCount));
+        return BuildingMaterialConverter.convertToBuildingMaterialResponse(buildingMaterialDao.getByVariableParameters(name, creationDate, manufacturerId, researchObjectId, paramCount),
+                                                                                manufacturerDao, researchObjectTypeDao);
     }
 
     @Override

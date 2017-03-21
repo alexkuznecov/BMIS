@@ -43,6 +43,13 @@ public class ChemicalElementDaoImpl extends AbstractDao implements ChemicalEleme
     }
 
     @Override
+    public Integer getIdByName(String name) {
+        Query query = getSession().createSQLQuery("select ceid from ChemicalElement where name = :name");
+        query.setString("name", name);
+        return query.getFirstResult();
+    }
+
+    @Override
     public void updateChemicalElement(ChemicalElement chemicalElement) {
         getSession().update(chemicalElement);
     }

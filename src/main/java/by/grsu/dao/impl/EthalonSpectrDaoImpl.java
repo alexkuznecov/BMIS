@@ -2,6 +2,7 @@ package by.grsu.dao.impl;
 
 import by.grsu.dao.AbstractDao;
 import by.grsu.dao.EthalonSpectrDao;
+import by.grsu.entity.BuildingMaterial;
 import by.grsu.entity.EthalonSpectr;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -40,6 +41,67 @@ public class EthalonSpectrDaoImpl extends AbstractDao implements EthalonSpectrDa
         Criteria criteria = getSession().createCriteria(EthalonSpectr.class);
         criteria.add(Restrictions.eq("etsid",etsid));
         return (EthalonSpectr) criteria.uniqueResult();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<EthalonSpectr> getByVariableParameters(String waveLength, Integer buildMaterialId, Integer materialId, Integer chemicalElementId,  Integer spectrLineId, Integer paramCount) {
+        StringBuilder queryParameters = new StringBuilder("select * from EthalonSpectr where ");
+        if (!waveLength.equals("")) {
+            queryParameters.append("wave_length like :waveLength");
+            paramCount --;
+            if (paramCount != 0) {
+                queryParameters.append(" and ");
+            }
+        }
+        if (buildMaterialId != -1) {
+            queryParameters.append("bmid like :buildMaterialId");
+            paramCount --;
+            if (paramCount != 0) {
+                queryParameters.append(" and ");
+            }
+        }
+        if (materialId != -1) {
+            queryParameters.append("mid like :materialId");
+            paramCount --;
+            if (paramCount != 0) {
+                queryParameters.append(" and ");
+            }
+        }
+        if (chemicalElementId != -1) {
+            queryParameters.append("ceid like :chemicalElementId");
+            paramCount --;
+            if (paramCount != 0) {
+                queryParameters.append(" and ");
+            }
+        }
+        if (spectrLineId != -1) {
+            queryParameters.append("slid like :spectrLineId");
+            paramCount --;
+            if (paramCount != 0) {
+                queryParameters.append(" and ");
+            }
+        }
+
+        Query query = getSession().createSQLQuery(queryParameters.toString()).addEntity(EthalonSpectr.class);
+
+        if (!waveLength.equals("")) {
+            query.setParameter("waveLength", waveLength + "%");
+        }
+        if (buildMaterialId != -1) {
+            query.setParameter("buildMaterialId", buildMaterialId + "%");
+        }
+        if (materialId != -1) {
+            query.setParameter("materialId", materialId + "%");
+        }
+        if (chemicalElementId != -1) {
+            query.setParameter("chemicalElementId", chemicalElementId + "%");
+        }
+        if (spectrLineId != -1) {
+            query.setParameter("spectrLineId", spectrLineId + "%");
+        }
+        System.out.println(query.getQueryString());
+        return (List<EthalonSpectr>) query.list();
     }
 
     @Override

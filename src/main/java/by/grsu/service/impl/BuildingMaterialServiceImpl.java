@@ -10,12 +10,16 @@ import by.grsu.entity.ResearchObject;
 import by.grsu.responseModel.BuildingMaterialsResponse;
 import by.grsu.service.BuildingMaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by alek on 19.3.17.
  */
+@Service("buildingMaterialService")
+@Transactional
 public class BuildingMaterialServiceImpl implements BuildingMaterialService {
 
     @Autowired

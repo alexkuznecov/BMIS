@@ -6,13 +6,17 @@ import by.grsu.entity.BuildingMaterial;
 import by.grsu.responseModel.EthalonSpectrResponse;
 import by.grsu.service.EthalonSpectrService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by alek on 19.3.17.
  */
-public class EthalonSpectrServiceimpl implements EthalonSpectrService {
+@Service("ethalonSpectrService")
+@Transactional
+public class EthalonSpectrServiceImpl implements EthalonSpectrService {
 
     @Autowired
     private EthalonSpectrDao ethalonSpectrDao;

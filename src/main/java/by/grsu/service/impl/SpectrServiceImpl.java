@@ -9,12 +9,16 @@ import by.grsu.entity.ResearchPassport;
 import by.grsu.responseModel.SpectrResponse;
 import by.grsu.service.SpectrService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by alek on 19.3.17.
  */
+@Service("spectrService")
+@Transactional
 public class SpectrServiceImpl implements SpectrService {
 
     @Autowired

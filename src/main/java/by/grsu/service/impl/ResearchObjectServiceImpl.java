@@ -6,12 +6,16 @@ import by.grsu.dao.ResearchObjectDao;
 import by.grsu.responseModel.ResearchObjectResponse;
 import by.grsu.service.ResearchObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by alek on 19.3.17.
  */
+@Service("researchObjectService")
+@Transactional
 public class ResearchObjectServiceImpl implements ResearchObjectService {
 
     @Autowired

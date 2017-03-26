@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,7 +37,10 @@ public class EthalonSpectrServiceImpl implements EthalonSpectrService {
     @Override
     public List<EthalonSpectrResponse> getByFilter(String waveLength, String buildMaterialName, String materialName, String chemicalElementName, String spectrLinePersonName, Integer paramCount) {
 
-        Integer buildMaterialId = -1, materialId = -1, chemicalElementId = -1, spectrLineId = -1;
+        List<Integer> buildMaterialId = new ArrayList<>();
+        List<Integer> materialId = new ArrayList<>();
+        List<Integer> chemicalElementId = new ArrayList<>();
+        List<Integer> spectrLineId = new ArrayList<>();
 
         if (!buildMaterialName.equals("")) {
             buildMaterialId = buildingMaterialDao.getIdByName(buildMaterialName);
@@ -57,6 +61,8 @@ public class EthalonSpectrServiceImpl implements EthalonSpectrService {
 
     @Override
     public List<EthalonSpectrResponse> getAllEthalonSpectrs() {
-        return null;
+
+        return EthalonSpectrConverter.convertToEthalonSpectrResponse(ethalonSpectrDao.findAllEthalonSpectrs(),
+                                                        buildingMaterialDao, materialDao, chemicalElementDao, spectrLineDao);
     }
 }

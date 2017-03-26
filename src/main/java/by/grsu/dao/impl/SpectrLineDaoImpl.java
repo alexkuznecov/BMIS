@@ -2,12 +2,15 @@ package by.grsu.dao.impl;
 
 import by.grsu.dao.AbstractDao;
 import by.grsu.dao.SpectrLineDao;
+import by.grsu.entity.Spectr;
 import by.grsu.entity.SpectrLine;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,10 +46,14 @@ public class SpectrLineDaoImpl extends AbstractDao implements SpectrLineDao{
     }
 
     @Override
-    public Integer getIdByName(String name) {
-        Query query = getSession().createSQLQuery("select slid from SpectrLine where person_name = :name");
-        query.setString("name", name);
-        return query.getFirstResult();
+    public List<Integer> getIdByName(String name) {
+        List<Integer> ids = new ArrayList<>();
+        Criteria criteria = getSession().createCriteria(SpectrLine.class);
+        criteria.add(Restrictions.eq("personName", name));
+        for (SpectrLine spectrLine : (List<SpectrLine>) criteria.list()) {
+            ids.add(spectrLine.getSlid());
+        }
+        return ids;
     }
 
     @Override

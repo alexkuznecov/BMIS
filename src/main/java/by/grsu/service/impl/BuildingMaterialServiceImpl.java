@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,7 +35,8 @@ public class BuildingMaterialServiceImpl implements BuildingMaterialService {
     @Override
     public List<BuildingMaterialsResponse> getByFilter(String name, String creationDate, String manufacturerName, String researchObjectTypeName, Integer paramCount) {
 
-        Integer manufacturerId = -1, researchObjectId = -1;
+        List<Integer> manufacturerId = new ArrayList<>();
+        List<Integer> researchObjectId = new ArrayList<>();
 
         if (!manufacturerName.equals("")) {
             manufacturerId = manufacturerDao.getIdByName(manufacturerName);
@@ -49,6 +51,6 @@ public class BuildingMaterialServiceImpl implements BuildingMaterialService {
 
     @Override
     public List<BuildingMaterialsResponse> getAllBuildingMaterials() {
-        return null;
+        return BuildingMaterialConverter.convertToBuildingMaterialResponse(buildingMaterialDao.findAllBuildingMaterials(), manufacturerDao, researchObjectTypeDao);
     }
 }

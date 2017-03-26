@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,10 +37,14 @@ public class ResearchPassprotDaoImpl extends AbstractDao implements ResearchPass
     }
 
     @Override
-    public Integer getIdByIntencity(String intensity) {
-        Query query = getSession().createSQLQuery("select rpid from ResearchPassport where intensity = :intensity");
-        query.setString("intensity", intensity);
-        return query.getFirstResult();
+    public List<Integer> getIdByIntencity(String intensity) {
+        List<Integer> ids = new ArrayList<>();
+        Criteria criteria = getSession().createCriteria(ResearchPassport.class);
+        criteria.add(Restrictions.eq("intensity", intensity));
+        for (ResearchPassport passport : (List<ResearchPassport>) criteria.list()) {
+            ids.add(passport.getRpid());
+        }
+        return ids;
     }
 
     @Override

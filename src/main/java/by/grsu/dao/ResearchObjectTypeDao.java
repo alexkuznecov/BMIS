@@ -17,7 +17,7 @@ public interface ResearchObjectTypeDao {
 
     ResearchObjectType findById(Integer rotid);
 
-    Integer getIdByName(String name);
+    List<Integer> getIdByName(String name);
 
     void updateResearchObjectType(ResearchObjectType researchObjectType);
 

@@ -16,7 +16,7 @@ public interface ChemicalElementDao {
 
     void updateChemicalElement(ChemicalElement chemicalElement);
 
-    Integer getIdByName(String name);
+    List<Integer> getIdByName(String name);
 
     String getAll();
 

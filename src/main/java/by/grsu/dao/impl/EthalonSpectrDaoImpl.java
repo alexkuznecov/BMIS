@@ -45,7 +45,7 @@ public class EthalonSpectrDaoImpl extends AbstractDao implements EthalonSpectrDa
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<EthalonSpectr> getByVariableParameters(String waveLength, Integer buildMaterialId, Integer materialId, Integer chemicalElementId,  Integer spectrLineId, Integer paramCount) {
+    public List<EthalonSpectr> getByVariableParameters(String waveLength, List<Integer> buildMaterialId, List<Integer> materialId, List<Integer> chemicalElementId,  List<Integer> spectrLineId, Integer paramCount) {
         StringBuilder queryParameters = new StringBuilder("select * from EthalonSpectr where ");
         if (!waveLength.equals("")) {
             queryParameters.append("wave_length like :waveLength");
@@ -54,29 +54,57 @@ public class EthalonSpectrDaoImpl extends AbstractDao implements EthalonSpectrDa
                 queryParameters.append(" and ");
             }
         }
-        if (buildMaterialId != -1) {
-            queryParameters.append("bmid like :buildMaterialId");
+        if (buildMaterialId.size() != 0) {
+            int size = buildMaterialId.size();
+            for (int i = 0; i < size; i++) {
+                queryParameters.append("bmid like :buildMaterial");
+                queryParameters.append(i);
+                if (i != size - 1) {
+                    queryParameters.append(" or ");
+                }
+            }
             paramCount --;
             if (paramCount != 0) {
                 queryParameters.append(" and ");
             }
         }
-        if (materialId != -1) {
-            queryParameters.append("mid like :materialId");
+        if (materialId.size() != 0) {
+            int size = materialId.size();
+            for (int i = 0; i < size; i++) {
+                queryParameters.append("mid like :materialId");
+                queryParameters.append(i);
+                if (i != size - 1) {
+                    queryParameters.append(" or ");
+                }
+            }
             paramCount --;
             if (paramCount != 0) {
                 queryParameters.append(" and ");
             }
         }
-        if (chemicalElementId != -1) {
-            queryParameters.append("ceid like :chemicalElementId");
+        if (chemicalElementId.size() != 0) {
+            int size = chemicalElementId.size();
+            for (int i = 0; i < size; i++) {
+                queryParameters.append("ceid like :chemicalElementId");
+                queryParameters.append(i);
+                if (i != size - 1) {
+                    queryParameters.append(" or ");
+                }
+            }
             paramCount --;
             if (paramCount != 0) {
                 queryParameters.append(" and ");
             }
         }
-        if (spectrLineId != -1) {
-            queryParameters.append("slid like :spectrLineId");
+        if (spectrLineId.size() != 0) {
+            int size = spectrLineId.size();
+            for (int i = 0; i <size; i++) {
+                queryParameters.append("slid like :spectrLineId");
+                queryParameters.append(i);
+                if (i != size - 1) {
+                    queryParameters.append(" or ");
+                }
+            }
             paramCount --;
             if (paramCount != 0) {
                 queryParameters.append(" and ");
@@ -88,17 +116,29 @@ public class EthalonSpectrDaoImpl extends AbstractDao implements EthalonSpectrDa
         if (!waveLength.equals("")) {
             query.setParameter("waveLength", waveLength + "%");
         }
-        if (buildMaterialId != -1) {
-            query.setParameter("buildMaterialId", buildMaterialId + "%");
+        if (buildMaterialId.size() != 0) {
+            int size = buildMaterialId.size();
+            for (int i = 0; i < size; i++) {
+                query.setParameter("buildMaterialId" + i, buildMaterialId.get(i) + "%");
+            }
         }
-        if (materialId != -1) {
-            query.setParameter("materialId", materialId + "%");
+        if (materialId.size() != 0) {
+            int size = materialId.size();
+            for (int i = 0; i < size; i++) {
+                query.setParameter("materialId" + i, materialId.get(i) + "%");
+            }
         }
-        if (chemicalElementId != -1) {
-            query.setParameter("chemicalElementId", chemicalElementId + "%");
+        if (chemicalElementId.size() != 0) {
+            int size = chemicalElementId.size();
+            for (int i = 0; i < size; i++) {
+                query.setParameter("chemicalElementId" + i, chemicalElementId.get(i) + "%");
+            }
         }
-        if (spectrLineId != -1) {
-            query.setParameter("spectrLineId", spectrLineId + "%");
+        if (spectrLineId.size() != 0) {
+            int size = spectrLineId.size();
+            for (int i = 0; i < size; i++) {
+                query.setParameter("spectrLineId" + i, spectrLineId.get(i) + "%");
+            }
         }
         System.out.println(query.getQueryString());
         return (List<EthalonSpectr>) query.list();

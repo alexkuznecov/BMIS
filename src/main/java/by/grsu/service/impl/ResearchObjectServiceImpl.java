@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +28,7 @@ public class ResearchObjectServiceImpl implements ResearchObjectService {
     @Override
     public List<ResearchObjectResponse> getByFilter(String name, String organizationName, String date, String description, Integer paramCount) {
 
-        Integer organizationId = -1;
+        List<Integer> organizationId = new ArrayList<>();
 
         if (!organizationName.equals("")) {
             organizationId = organizationDao.getIdByName(organizationName);
@@ -39,6 +40,6 @@ public class ResearchObjectServiceImpl implements ResearchObjectService {
 
     @Override
     public List<ResearchObjectResponse> getAllResearchObjects() {
-        return null;
+        return ResearchObjectConverter.convertToResearchObjectResponse(researchObjectDao.findAllResearchObjects(), organizationDao);
     }
 }

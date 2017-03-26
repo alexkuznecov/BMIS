@@ -2,12 +2,14 @@ package by.grsu.dao.impl;
 
 import by.grsu.dao.AbstractDao;
 import by.grsu.dao.MaterialDao;
+import by.grsu.entity.Manufacturer;
 import by.grsu.entity.Material;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,10 +45,14 @@ public class MaterialDaoImpl extends AbstractDao implements MaterialDao {
     }
 
     @Override
-    public Integer getIdByName(String name) {
-        Query query = getSession().createSQLQuery("select mid from Material where name = :name");
-        query.setString("name", name);
-        return query.getFirstResult();
+    public List<Integer> getIdByName(String name) {
+        List<Integer> ids = new ArrayList<>();
+        Criteria criteria = getSession().createCriteria(Material.class);
+        criteria.add(Restrictions.eq("name", name));
+        for (Material material : (List<Material>) criteria.list()) {
+            ids.add(material.getMid());
+        }
+        return ids;
     }
 
 

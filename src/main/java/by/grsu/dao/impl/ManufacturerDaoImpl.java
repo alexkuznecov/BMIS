@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,9 +49,13 @@ public class ManufacturerDaoImpl extends AbstractDao implements ManufacturerDao 
     }
 
     @Override
-    public Integer getIdByName(String name) {
-        Query query = getSession().createSQLQuery("select mnfid from Manufactorer where name = :name");
-        query.setString("name", name);
-        return query.getFirstResult();
+    public List<Integer> getIdByName(String name) {
+        List<Integer> ids = new ArrayList<>();
+        Criteria criteria = getSession().createCriteria(Manufacturer.class);
+        criteria.add(Restrictions.eq("name", name));
+        for (Manufacturer manufacturer : (List<Manufacturer>) criteria.list()) {
+            ids.add(manufacturer.getMnfid());
+        }
+        return ids;
     }
 }

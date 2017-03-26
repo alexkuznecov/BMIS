@@ -45,7 +45,7 @@ public class ResearchObjectDaoImpl extends AbstractDao implements ResearchObject
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<ResearchObject> getByVariableParameters(String name, Integer organizationId, String date, String description, Integer paramCount) {
+    public List<ResearchObject> getByVariableParameters(String name, List<Integer> organizationId, String date, String description, Integer paramCount) {
         StringBuilder queryParameters = new StringBuilder("select * from ResearchObject where ");
         if (!name.equals("")) {
             queryParameters.append("name like :name");
@@ -54,8 +54,15 @@ public class ResearchObjectDaoImpl extends AbstractDao implements ResearchObject
                 queryParameters.append(" and ");
             }
         }
-        if (organizationId != -1) {
-            queryParameters.append("oid like :organizationId");
+        if (organizationId.size() != 0) {
+            int size = organizationId.size();
+            for (int i = 0; i < size; i++) {
+                queryParameters.append("oid like :organizationId");
+                queryParameters.append(i);
+                if (i != size - 1) {
+                    queryParameters.append(" or ");
+                }
+            }
             paramCount --;
             if (paramCount != 0) {
                 queryParameters.append(" and ");
@@ -81,8 +88,11 @@ public class ResearchObjectDaoImpl extends AbstractDao implements ResearchObject
         if (!name.equals("")) {
             query.setParameter("name", name + "%");
         }
-        if (organizationId != -1) {
-            query.setParameter("organizationId", organizationId + "%");
+        if (organizationId.size() != 0) {
+            int size = organizationId.size();
+            for (int i = 0; i < size; i++) {
+                query.setParameter("organizationId" + i, organizationId.get(i) + "%");
+            }
         }
         if (!date.equals("")) {
             query.setParameter("date", date + "%");

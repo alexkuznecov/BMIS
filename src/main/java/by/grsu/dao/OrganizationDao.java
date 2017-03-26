@@ -17,7 +17,7 @@ public interface OrganizationDao {
 
     Organization findById(Integer oid);
 
-    Integer getIdByName(String name);
+    List<Integer> getIdByName(String name);
 
     void updateOrganization(Organization organization);
 

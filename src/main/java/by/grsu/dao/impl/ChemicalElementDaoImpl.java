@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,10 +44,14 @@ public class ChemicalElementDaoImpl extends AbstractDao implements ChemicalEleme
     }
 
     @Override
-    public Integer getIdByName(String name) {
-        Query query = getSession().createSQLQuery("select ceid from ChemicalElement where name = :name");
-        query.setString("name", name);
-        return query.getFirstResult();
+    public List<Integer> getIdByName(String name) {
+        List<Integer> ids = new ArrayList<>();
+        Criteria criteria = getSession().createCriteria(ChemicalElement.class);
+        criteria.add(Restrictions.eq("name", name));
+        for (ChemicalElement chemicalElement : (List<ChemicalElement>) criteria.list()) {
+            ids.add(chemicalElement.getCeid());
+        }
+        return ids;
     }
 
     @Override

@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,18 +44,22 @@ public class BuildingMaterialDaoImpl extends AbstractDao implements BuildingMate
     }
 
     @Override
-    public Integer getIdByName(String name) {
-        Query query = getSession().createSQLQuery("select bmid from BuildingMaterial where short_name = :name");
-        query.setString("name", name);
-        return query.getFirstResult();
+    public List<Integer> getIdByName(String name) {
+        List<Integer> ids = new ArrayList<>();
+        Criteria criteria = getSession().createCriteria(BuildingMaterial.class);
+        criteria.add(Restrictions.eq("shortName", name));
+        for (BuildingMaterial buildingMaterial : (List<BuildingMaterial>)criteria.list()) {
+            ids.add(buildingMaterial.getBmid());
+        }
+        return ids;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<BuildingMaterial> getByVariableParameters(String name, String creationDate, Integer manufacturerId, Integer researchObjectTypeId, Integer paramCount) {
+    public List<BuildingMaterial> getByVariableParameters(String name, String creationDate, List<Integer> manufacturerId, List<Integer> researchObjectTypeId, Integer paramCount) {
         StringBuilder queryParameters = new StringBuilder("select * from BuildingMaterial where ");
         if (!name.equals("")) {
-            queryParameters.append("name like :name");
+            queryParameters.append("short_name like :name");
             paramCount --;
             if (paramCount != 0) {
                 queryParameters.append(" and ");
@@ -67,15 +72,29 @@ public class BuildingMaterialDaoImpl extends AbstractDao implements BuildingMate
                 queryParameters.append(" and ");
             }
         }
-        if (manufacturerId != -1) {
-            queryParameters.append("mnfid like :mnfid");
+        if (manufacturerId.size() != 0) {
+            int size = manufacturerId.size();
+            for (int i = 0; i < size; i++) {
+                queryParameters.append("mnfid like :mnfid");
+                queryParameters.append(i);
+                if (i != size - 1) {
+                    queryParameters.append(" or ");
+                }
+            }
             paramCount --;
             if (paramCount != 0) {
                 queryParameters.append(" and ");
             }
         }
-        if (researchObjectTypeId != -1) {
-            queryParameters.append("rotid like :rotid");
+        if (researchObjectTypeId.size() != 0) {
+            int size = researchObjectTypeId.size();
+            for (int i = 0; i < size; i++) {
+                queryParameters.append("rotid like :rotid");
+                queryParameters.append(i);
+                if (i != size - 1) {
+                    queryParameters.append(" or ");
+                }
+            }
             paramCount --;
             if (paramCount != 0) {
                 queryParameters.append(" and ");
@@ -90,11 +109,17 @@ public class BuildingMaterialDaoImpl extends AbstractDao implements BuildingMate
         if (!creationDate.equals("")) {
             query.setParameter("made_year", creationDate + "%");
         }
-        if (manufacturerId != -1) {
-            query.setParameter("mnfid", manufacturerId + "%");
+        if (manufacturerId.size() != 0) {
+            int size = manufacturerId.size();
+            for (int i = 0; i < size; i++) {
+                query.setParameter("mnfid" + i, manufacturerId.get(i) + "%");
+            }
         }
-        if (researchObjectTypeId != -1) {
-            query.setParameter("rotid", researchObjectTypeId + "%");
+        if (researchObjectTypeId.size() != 0) {
+            int size = researchObjectTypeId.size();
+            for (int i = 0; i < size; i++) {
+                query.setParameter("rotid" + i, researchObjectTypeId.get(i) + "%");
+            }
         }
         System.out.println(query.getQueryString());
         return (List<BuildingMaterial>) query.list();

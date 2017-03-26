@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,7 +37,9 @@ public class SpectrServiceImpl implements SpectrService {
     @Override
     public List<SpectrResponse> getByFilter(String waveLength, String intensity, String chemicalElementName, String spectrLineName, Integer paramCount) {
 
-        Integer chemicalElementId = -1, researchPassportId = -1, spectrLineId = -1;
+        List<Integer> chemicalElementId = new ArrayList<>();
+        List<Integer> researchPassportId = new ArrayList<>();
+        List<Integer> spectrLineId = new ArrayList<>();
 
         if (!chemicalElementName.equals("")) {
             chemicalElementId = chemicalElementDao.getIdByName(chemicalElementName);
@@ -54,6 +57,8 @@ public class SpectrServiceImpl implements SpectrService {
 
     @Override
     public List<SpectrResponse> getAllSpectrs() {
-        return null;
+
+        return SpectrConverter.convertToSpectrResponse(spectrDao.findAllSpectrs(), chemicalElementDao, researchPassportDao, spectrLineDao);
+
     }
 }

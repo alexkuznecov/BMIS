@@ -15,40 +15,40 @@ public class ChemicalElement {
     private Integer ceid;
 
     @Column(name = "name")
-    private String name;
+    protected String name;
 
     @Column(name = "symbol")
-    private String symbol;
+    protected String symbol;
 
     @Column(name = "atomic_weight")
-    private String atomicWeight;
+    protected String atomicWeight;
 
     @Column(name = "atomic_number")
-    private String atomicNumber;
+    protected String atomicNumber;
 
     @Column(name = "description")
-    private String description;
+    protected String description;
 
     @Column(name = "ions")
-    private String ions;
+    protected String ions;
 
     @Column(name = "group_number")
-    private String groupNumber;
+    protected String groupNumber;
 
     @Column(name = "period")
-    private String period;
+    protected String period;
 
     @Column(name = "density")
-    private String density;
+    protected String density;
 
     @Column(name = "melting_point")
-    private String meltingPoint;
+    protected String meltingPoint;
 
     @Column(name = "boiling_point")
-    private String boilingPoint;
+    protected String boilingPoint;
 
     @Column(name = "abundance")
-    private String abundance;
+    protected String abundance;
 
     public ChemicalElement() {
 

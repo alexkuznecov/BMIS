@@ -15,13 +15,13 @@ public class Attachment {
     private Integer attchid;
 
     @Column(name = "name")
-    private String name;
+    protected String name;
 
     @Column(name = "description")
-    private String description;
+    protected String description;
 
     @Column(name = "attach_file")
-    private String attachFile;
+    protected String attachFile;
 
     @Column(name = "roid")
     private Integer roid;

@@ -15,7 +15,7 @@ public class ResearchObjectType {
     private Integer rotid;
 
     @Column(name = "name")
-    private String name;
+    protected String name;
 
     public ResearchObjectType() {
 

@@ -15,13 +15,13 @@ public class Manufacturer {
     private Integer mnfid;
 
     @Column(name = "name")
-    private String name;
+    protected String name;
 
     @Column(name = "year_of_creation")
-    private String yearOfCreation;
+    protected String yearOfCreation;
 
     @Column(name = "description")
-    private String description;
+    protected String description;
 
     public Manufacturer() {
 

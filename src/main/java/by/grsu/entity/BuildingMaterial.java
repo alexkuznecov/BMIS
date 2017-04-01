@@ -15,22 +15,22 @@ public class BuildingMaterial {
     private Integer bmid;
 
     @Column(name = "mark")
-    private String mark;
+    protected String mark;
 
     @Column(name = "short_name")
-    private String shortName;
+    protected String shortName;
 
     @Column(name = "frost_resistance")
-    private String frostResistance;
+    protected String frostResistance;
 
     @Column(name = "mechanical_stress")
-    private String mechanicalStress;
+    protected String mechanicalStress;
 
     @Column(name = "made_year")
-    private  String year;
+    protected  String year;
 
     @Column(name = "spectr_file")
-    private String spectrFile;
+    protected String spectrFile;
 
     @Column(name = "rotid")
     private Integer rotid;

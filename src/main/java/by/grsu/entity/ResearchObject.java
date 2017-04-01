@@ -15,13 +15,13 @@ public class ResearchObject {
     private Integer roid;
 
     @Column(name = "description")
-    private String description;
+    protected String description;
 
     @Column(name = "date")
-    private String date;
+    protected String date;
 
     @Column(name = "name")
-    private String name;
+    protected String name;
 
     @Column(name = "oid")
     private Integer oid;

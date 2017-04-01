@@ -15,19 +15,19 @@ public class Material {
     private Integer mid;
 
     @Column(name = "name")
-    private String name;
+    protected String name;
 
     @Column(name = "probe_date")
-    private String probeDate;
+    protected String probeDate;
 
     @Column(name = "probe_place")
-    private String probePlace;
+    protected String probePlace;
 
     @Column(name = "description")
-    private String description;
+    protected String description;
 
     @Column(name = "spectr_file")
-    private String spectrFile;
+    protected String spectrFile;
 
     public Material() {
 

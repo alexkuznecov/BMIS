@@ -15,7 +15,7 @@ public class QualityStandart {
     private Integer qsid;
 
     @Column(name = "name")
-    private String name;
+    protected String name;
 
     public QualityStandart() {
 

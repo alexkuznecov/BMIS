@@ -15,13 +15,13 @@ public class Spectr {
     private Integer spcid;
 
     @Column(name = "wave_length")
-    private String waveLength;
+    protected String waveLength;
 
     @Column(name = "line_description")
-    private String lineDescription;
+    protected String lineDescription;
 
     @Column(name = "spectr_base")
-    private String spectrBase;
+    protected String spectrBase;
 
     @Column(name = "rpid")
     private Integer rpid;

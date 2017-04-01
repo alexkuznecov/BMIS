@@ -15,16 +15,16 @@ public class SpectrLine {
     private Integer slid;
 
     @Column(name = "date_line")
-    private String dateLine;
+    protected String dateLine;
 
     @Column(name = "person_name")
-    private String personName;
+    protected String personName;
 
     @Column(name = "wavelength_line")
-    private String waveLengthLine;
+    protected String waveLengthLine;
 
     @Column(name = "other_option")
-    private String otherOption;
+    protected String otherOption;
 
     @Column(name = "sllid")
     private Integer sllid;

@@ -15,13 +15,13 @@ public class SpectrLineLibrary {
     private Integer sllid;
 
     @Column(name = "name")
-    private String name;
+    protected String name;
 
     @Column(name = "description")
-    private String description;
+    protected String description;
 
     @Column(name = "comments_library")
-    private String commentsLibrary;
+    protected String commentsLibrary;
 
     public SpectrLineLibrary() {
 

@@ -15,13 +15,13 @@ public class ResearchPassport {
     private Integer rpid;
 
     @Column(name = "spectr_file")
-    private String spectrFile;
+    protected String spectrFile;
 
     @Column(name = "description")
-    private String description;
+    protected String description;
 
     @Column(name = "intensity")
-    private String intensity;
+    protected String intensity;
 
     @Column(name = "rmid")
     private Integer rmid;

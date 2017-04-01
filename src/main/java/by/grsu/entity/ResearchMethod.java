@@ -15,10 +15,10 @@ public class ResearchMethod {
     private Integer rmid;
 
     @Column(name = "name")
-    private String name;
+    protected String name;
 
     @Column(name = "description")
-    private String description;
+    protected String description;
 
     public ResearchMethod() {
 

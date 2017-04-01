@@ -15,10 +15,10 @@ public class Organization {
     private Integer oid;
 
     @Column(name = "full_title")
-    private String fullTitle;
+    protected String fullTitle;
 
     @Column(name = "short_title")
-    private String shortTitle;
+    protected String shortTitle;
 
     public Organization() {
 

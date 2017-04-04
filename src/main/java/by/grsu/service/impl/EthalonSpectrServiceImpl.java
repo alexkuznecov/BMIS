@@ -2,8 +2,7 @@ package by.grsu.service.impl;
 
 import by.grsu.converters.EthalonSpectrConverter;
 import by.grsu.dao.*;
-import by.grsu.entity.BuildingMaterial;
-import by.grsu.responseModel.EthalonSpectrResponse;
+import by.grsu.dto.EthalonSpectrDTO;
 import by.grsu.service.EthalonSpectrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +34,7 @@ public class EthalonSpectrServiceImpl implements EthalonSpectrService {
     private SpectrLineDao spectrLineDao;
 
     @Override
-    public List<EthalonSpectrResponse> getByFilter(String waveLength, String buildMaterialName, String materialName, String chemicalElementName, String spectrLinePersonName, Integer paramCount) {
+    public List<EthalonSpectrDTO> getByFilter(String waveLength, String buildMaterialName, String materialName, String chemicalElementName, String spectrLinePersonName, Integer paramCount) {
 
         List<Integer> buildMaterialId = new ArrayList<>();
         List<Integer> materialId = new ArrayList<>();
@@ -60,7 +59,7 @@ public class EthalonSpectrServiceImpl implements EthalonSpectrService {
     }
 
     @Override
-    public List<EthalonSpectrResponse> getAllEthalonSpectrs() {
+    public List<EthalonSpectrDTO> getAllEthalonSpectrs() {
 
         return EthalonSpectrConverter.convertToEthalonSpectrResponse(ethalonSpectrDao.findAllEthalonSpectrs(),
                                                         buildingMaterialDao, materialDao, chemicalElementDao, spectrLineDao);

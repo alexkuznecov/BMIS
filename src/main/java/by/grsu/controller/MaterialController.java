@@ -1,13 +1,10 @@
 package by.grsu.controller;
 
 import by.grsu.enums.Filter;
-import by.grsu.responseModel.MaterialResponse;
+import by.grsu.dto.MaterialDTO;
 import by.grsu.service.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -24,12 +21,12 @@ public class MaterialController {
     private MaterialService materialService;
 
     @RequestMapping("/all")
-    public List<MaterialResponse> getAll() {
+    public List<MaterialDTO> getAll() {
         return materialService.getAllMaterials();
     }
 
     @RequestMapping("/filters")
-    public List<MaterialResponse> filter(@RequestParam Map<String, String> filters) {
+    public List<MaterialDTO> filter(@RequestParam Map<String, String> filters) {
         try {
             String name = "", probDate = "", probPlace = "", description = "";
             Integer paramCount = 0;

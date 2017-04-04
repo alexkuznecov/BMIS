@@ -1,6 +1,6 @@
 package by.grsu.service;
 
-import by.grsu.responseModel.SpectrResponse;
+import by.grsu.dto.SpectrDTO;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import java.util.List;
  */
 public interface SpectrService {
 
-    List<SpectrResponse> getByFilter(String waveLength, String intensity, String chemicalElementName, String spectrLineName , Integer paramCount);
+    List<SpectrDTO> getByFilter(String waveLength, String intensity, String chemicalElementName, String spectrLineName , Integer paramCount);
 
-    List<SpectrResponse> getAllSpectrs();
+    List<SpectrDTO> getAllSpectrs();
 
 }

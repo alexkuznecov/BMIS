@@ -1,7 +1,7 @@
 package by.grsu.controller;
 
 import by.grsu.enums.Filter;
-import by.grsu.responseModel.EthalonSpectrResponse;
+import by.grsu.dto.EthalonSpectrDTO;
 import by.grsu.service.EthalonSpectrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,12 +24,12 @@ public class EthalonSpectrController {
     private EthalonSpectrService ethalonSpectrService;
 
     @RequestMapping("/all")
-    public List<EthalonSpectrResponse> getAll() {
+    public List<EthalonSpectrDTO> getAll() {
         return ethalonSpectrService.getAllEthalonSpectrs();
     }
 
     @RequestMapping("/filters")
-    public List<EthalonSpectrResponse> getByFilters(@RequestParam Map<String, String> filters) {
+    public List<EthalonSpectrDTO> getByFilters(@RequestParam Map<String, String> filters) {
         try {
             String waveLength = "", buildMaterialName = "", materialName = "", chemicalElementName = "", spectrLinePersonName = "";
             Integer paramCount = 0;

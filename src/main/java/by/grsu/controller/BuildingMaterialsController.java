@@ -1,7 +1,7 @@
 package by.grsu.controller;
 
 import by.grsu.enums.Filter;
-import by.grsu.responseModel.BuildingMaterialsResponse;
+import by.grsu.dto.BuildingMaterialsDTO;
 import by.grsu.service.BuildingMaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,12 +24,12 @@ public class BuildingMaterialsController {
     private BuildingMaterialService buildingMaterialService;
 
     @RequestMapping("/all")
-    public List<BuildingMaterialsResponse> getAll() {
+    public List<BuildingMaterialsDTO> getAll() {
         return buildingMaterialService.getAllBuildingMaterials();
     }
 
     @RequestMapping("/filters")
-    public List<BuildingMaterialsResponse> getByFilters(@RequestParam Map<String, String> filters) {
+    public List<BuildingMaterialsDTO> getByFilters(@RequestParam Map<String, String> filters) {
         try {
             String name = "", creationDate = "", manufactorerName = "", researchObjectTypeName = "";
             Integer paramCount = 0;

@@ -1,9 +1,9 @@
-package by.grsu.responseModel;
+package by.grsu.dto;
 
 /**
  * Created by alek on 19.3.17.
  */
-public class BuildingMaterialsResponse {
+public class BuildingMaterialsDTO {
 
     private String name;
 
@@ -13,7 +13,7 @@ public class BuildingMaterialsResponse {
 
     private String researchObjectTypeName;
 
-    public BuildingMaterialsResponse() {
+    public BuildingMaterialsDTO() {
 
     }
 

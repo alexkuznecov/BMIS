@@ -1,7 +1,7 @@
 package by.grsu.converters;
 
 import by.grsu.entity.Material;
-import by.grsu.responseModel.MaterialResponse;
+import by.grsu.dto.MaterialDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,16 +11,16 @@ import java.util.List;
  */
 public class MaterialConverter {
 
-    public static List<MaterialResponse> convertToMaterialResponse(List<Material> materials) {
-        List<MaterialResponse> materialResponses = new ArrayList<>();
+    public static List<MaterialDTO> convertToMaterialResponse(List<Material> materials) {
+        List<MaterialDTO> materialDTOS = new ArrayList<>();
         for (Material material : materials) {
-            MaterialResponse materialResponse = new MaterialResponse();
-            materialResponse.setName(material.getName());
-            materialResponse.setProbeDate(material.getProbeDate());
-            materialResponse.setProbePlace(material.getProbePlace());
-            materialResponse.setDescription(material.getDescription());
-            materialResponses.add(materialResponse);
+            MaterialDTO materialDTO = new MaterialDTO();
+            materialDTO.setName(material.getName());
+            materialDTO.setProbeDate(material.getProbeDate());
+            materialDTO.setProbePlace(material.getProbePlace());
+            materialDTO.setDescription(material.getDescription());
+            materialDTOS.add(materialDTO);
         }
-        return materialResponses;
+        return materialDTOS;
     }
 }

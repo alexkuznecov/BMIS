@@ -1,9 +1,9 @@
-package by.grsu.responseModel;
+package by.grsu.dto;
 
 /**
  * Created by alek on 19.3.17.
  */
-public class ResearchObjectResponse {
+public class ResearchObjectDTO {
 
     private String name;
 
@@ -13,7 +13,7 @@ public class ResearchObjectResponse {
 
     private String description;
 
-    public ResearchObjectResponse() {
+    public ResearchObjectDTO() {
 
     }
 

@@ -3,11 +3,8 @@ package by.grsu.service.impl;
 import by.grsu.converters.BuildingMaterialConverter;
 import by.grsu.dao.BuildingMaterialDao;
 import by.grsu.dao.ManufacturerDao;
-import by.grsu.dao.ResearchObjectDao;
 import by.grsu.dao.ResearchObjectTypeDao;
-import by.grsu.entity.BuildingMaterial;
-import by.grsu.entity.ResearchObject;
-import by.grsu.responseModel.BuildingMaterialsResponse;
+import by.grsu.dto.BuildingMaterialsDTO;
 import by.grsu.service.BuildingMaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +30,7 @@ public class BuildingMaterialServiceImpl implements BuildingMaterialService {
     private BuildingMaterialDao buildingMaterialDao;
 
     @Override
-    public List<BuildingMaterialsResponse> getByFilter(String name, String creationDate, String manufacturerName, String researchObjectTypeName, Integer paramCount) {
+    public List<BuildingMaterialsDTO> getByFilter(String name, String creationDate, String manufacturerName, String researchObjectTypeName, Integer paramCount) {
 
         List<Integer> manufacturerId = new ArrayList<>();
         List<Integer> researchObjectId = new ArrayList<>();
@@ -50,7 +47,7 @@ public class BuildingMaterialServiceImpl implements BuildingMaterialService {
     }
 
     @Override
-    public List<BuildingMaterialsResponse> getAllBuildingMaterials() {
+    public List<BuildingMaterialsDTO> getAllBuildingMaterials() {
         return BuildingMaterialConverter.convertToBuildingMaterialResponse(buildingMaterialDao.findAllBuildingMaterials(), manufacturerDao, researchObjectTypeDao);
     }
 }

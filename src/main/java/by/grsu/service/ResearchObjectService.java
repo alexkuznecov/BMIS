@@ -1,6 +1,6 @@
 package by.grsu.service;
 
-import by.grsu.responseModel.ResearchObjectResponse;
+import by.grsu.dto.ResearchObjectDTO;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import java.util.List;
  */
 public interface ResearchObjectService {
 
-    List<ResearchObjectResponse> getByFilter(String name, String organizationName, String date, String description, Integer paramCount);
+    List<ResearchObjectDTO> getByFilter(String name, String organizationName, String date, String description, Integer paramCount);
 
-    List<ResearchObjectResponse> getAllResearchObjects();
+    List<ResearchObjectDTO> getAllResearchObjects();
 
 }

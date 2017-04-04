@@ -1,9 +1,9 @@
-package by.grsu.responseModel;
+package by.grsu.dto;
 
 /**
  * Created by alek on 19.3.17.
  */
-public class SpectrResponse {
+public class SpectrDTO {
 
     private String waveLength;
 
@@ -13,7 +13,7 @@ public class SpectrResponse {
 
     private String spectrLineName;
 
-    public SpectrResponse() {
+    public SpectrDTO() {
 
     }
 

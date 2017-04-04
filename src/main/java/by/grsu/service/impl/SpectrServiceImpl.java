@@ -5,8 +5,7 @@ import by.grsu.dao.ChemicalElementDao;
 import by.grsu.dao.ResearchPassportDao;
 import by.grsu.dao.SpectrDao;
 import by.grsu.dao.SpectrLineDao;
-import by.grsu.entity.ResearchPassport;
-import by.grsu.responseModel.SpectrResponse;
+import by.grsu.dto.SpectrDTO;
 import by.grsu.service.SpectrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +34,7 @@ public class SpectrServiceImpl implements SpectrService {
     private SpectrLineDao spectrLineDao;
 
     @Override
-    public List<SpectrResponse> getByFilter(String waveLength, String intensity, String chemicalElementName, String spectrLineName, Integer paramCount) {
+    public List<SpectrDTO> getByFilter(String waveLength, String intensity, String chemicalElementName, String spectrLineName, Integer paramCount) {
 
         List<Integer> chemicalElementId = new ArrayList<>();
         List<Integer> researchPassportId = new ArrayList<>();
@@ -56,7 +55,7 @@ public class SpectrServiceImpl implements SpectrService {
     }
 
     @Override
-    public List<SpectrResponse> getAllSpectrs() {
+    public List<SpectrDTO> getAllSpectrs() {
 
         return SpectrConverter.convertToSpectrResponse(spectrDao.findAllSpectrs(), chemicalElementDao, researchPassportDao, spectrLineDao);
 

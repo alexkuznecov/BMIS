@@ -1,9 +1,9 @@
-package by.grsu.responseModel;
+package by.grsu.dto;
 
 /**
  * Created by alek on 19.3.17.
  */
-public class EthalonSpectrResponse {
+public class EthalonSpectrDTO {
 
     private String waveLength;
 
@@ -15,7 +15,7 @@ public class EthalonSpectrResponse {
 
     private String spectrLinePersonName;
 
-    public EthalonSpectrResponse() {
+    public EthalonSpectrDTO() {
 
     }
 

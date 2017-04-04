@@ -5,7 +5,7 @@ import by.grsu.dao.ChemicalElementDao;
 import by.grsu.dao.MaterialDao;
 import by.grsu.dao.SpectrLineDao;
 import by.grsu.entity.EthalonSpectr;
-import by.grsu.responseModel.EthalonSpectrResponse;
+import by.grsu.dto.EthalonSpectrDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,24 +15,24 @@ import java.util.List;
  */
 public class EthalonSpectrConverter {
 
-    public static List<EthalonSpectrResponse> convertToEthalonSpectrResponse(List<EthalonSpectr> ethalonSpectrs,
-                                                                             BuildingMaterialDao buildingMaterialDao,
-                                                                             MaterialDao materialDao, ChemicalElementDao chemicalElementDao,
-                                                                             SpectrLineDao spectrLineDao) {
+    public static List<EthalonSpectrDTO> convertToEthalonSpectrResponse(List<EthalonSpectr> ethalonSpectrs,
+                                                                        BuildingMaterialDao buildingMaterialDao,
+                                                                        MaterialDao materialDao, ChemicalElementDao chemicalElementDao,
+                                                                        SpectrLineDao spectrLineDao) {
 
-        List<EthalonSpectrResponse> ethalonSpectrResponses = new ArrayList<>();
+        List<EthalonSpectrDTO> ethalonSpectrDTOS = new ArrayList<>();
 
         for (EthalonSpectr ethalonSpectr : ethalonSpectrs) {
-            EthalonSpectrResponse ethalonSpectrResponse = new EthalonSpectrResponse();
-            ethalonSpectrResponse.setWaveLength(ethalonSpectr.getWaveLength());
-            ethalonSpectrResponse.setBuildMaterialName(buildingMaterialDao.findById(ethalonSpectr.getBmid()).getShortName());
-            ethalonSpectrResponse.setChemicalElementName(chemicalElementDao.findById(ethalonSpectr.getCeid()).getName());
-            ethalonSpectrResponse.setMaterialName(materialDao.findById(ethalonSpectr.getMid()).getName());
-            ethalonSpectrResponse.setSpectrLinePersonName(spectrLineDao.findById(ethalonSpectr.getSlid()).getPersonName());
-            ethalonSpectrResponses.add(ethalonSpectrResponse);
+            EthalonSpectrDTO ethalonSpectrDTO = new EthalonSpectrDTO();
+            ethalonSpectrDTO.setWaveLength(ethalonSpectr.getWaveLength());
+            ethalonSpectrDTO.setBuildMaterialName(buildingMaterialDao.findById(ethalonSpectr.getBmid()).getShortName());
+            ethalonSpectrDTO.setChemicalElementName(chemicalElementDao.findById(ethalonSpectr.getCeid()).getName());
+            ethalonSpectrDTO.setMaterialName(materialDao.findById(ethalonSpectr.getMid()).getName());
+            ethalonSpectrDTO.setSpectrLinePersonName(spectrLineDao.findById(ethalonSpectr.getSlid()).getPersonName());
+            ethalonSpectrDTOS.add(ethalonSpectrDTO);
         }
 
-        return ethalonSpectrResponses;
+        return ethalonSpectrDTOS;
 
     }
 

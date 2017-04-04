@@ -1,7 +1,7 @@
 package by.grsu.controller;
 
 import by.grsu.enums.Filter;
-import by.grsu.responseModel.ResearchObjectResponse;
+import by.grsu.dto.ResearchObjectDTO;
 import by.grsu.service.ResearchObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,12 +24,12 @@ public class ResearchObjectController {
     private ResearchObjectService researchObjectService;
 
     @RequestMapping("/all")
-    public List<ResearchObjectResponse> getAll() {
+    public List<ResearchObjectDTO> getAll() {
         return researchObjectService.getAllResearchObjects();
     }
 
     @RequestMapping("/filters")
-    public List<ResearchObjectResponse> getByFilters(@RequestParam Map<String, String> filters) {
+    public List<ResearchObjectDTO> getByFilters(@RequestParam Map<String, String> filters) {
         try {
             String name = "", organizationName = "", date = "", description = "";
             Integer paramCount = 0;

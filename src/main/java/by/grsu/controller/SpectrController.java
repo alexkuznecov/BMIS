@@ -1,7 +1,7 @@
 package by.grsu.controller;
 
 import by.grsu.enums.Filter;
-import by.grsu.responseModel.SpectrResponse;
+import by.grsu.dto.SpectrDTO;
 import by.grsu.service.SpectrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,12 +24,12 @@ public class SpectrController {
     private SpectrService spectrService;
 
     @RequestMapping("/all")
-    public List<SpectrResponse> getAll() {
+    public List<SpectrDTO> getAll() {
         return spectrService.getAllSpectrs();
     }
 
     @RequestMapping("/filters")
-    public List<SpectrResponse> getByFilters(@RequestParam Map<String, String> filters) {
+    public List<SpectrDTO> getByFilters(@RequestParam Map<String, String> filters) {
         try {
             String waveLength = "", intensity = "", chemicalElementName = "", spectrLineName = "";
             Integer paramCount = 0;

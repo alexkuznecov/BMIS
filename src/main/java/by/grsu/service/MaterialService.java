@@ -1,6 +1,6 @@
 package by.grsu.service;
 
-import by.grsu.responseModel.MaterialResponse;
+import by.grsu.dto.MaterialDTO;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import java.util.List;
  */
 public interface MaterialService {
 
-    List<MaterialResponse> getByFilter(String name, String probDate, String probPlace, String description, Integer paramCount);
+    List<MaterialDTO> getByFilter(String name, String probDate, String probPlace, String description, Integer paramCount);
 
-    List<MaterialResponse> getAllMaterials();
+    List<MaterialDTO> getAllMaterials();
 
 }

@@ -1,6 +1,6 @@
 package by.grsu.service;
 
-import by.grsu.responseModel.EthalonSpectrResponse;
+import by.grsu.dto.EthalonSpectrDTO;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import java.util.List;
  */
 public interface EthalonSpectrService {
 
-    List<EthalonSpectrResponse> getByFilter(String waveLength, String buildMaterialName, String materialName, String chemicalElementName, String spectrLinePersonName ,Integer paramCount);
+    List<EthalonSpectrDTO> getByFilter(String waveLength, String buildMaterialName, String materialName, String chemicalElementName, String spectrLinePersonName , Integer paramCount);
 
-    List<EthalonSpectrResponse> getAllEthalonSpectrs();
+    List<EthalonSpectrDTO> getAllEthalonSpectrs();
 
 }

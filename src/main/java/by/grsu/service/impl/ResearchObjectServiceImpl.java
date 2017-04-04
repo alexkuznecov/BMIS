@@ -3,7 +3,7 @@ package by.grsu.service.impl;
 import by.grsu.converters.ResearchObjectConverter;
 import by.grsu.dao.OrganizationDao;
 import by.grsu.dao.ResearchObjectDao;
-import by.grsu.responseModel.ResearchObjectResponse;
+import by.grsu.dto.ResearchObjectDTO;
 import by.grsu.service.ResearchObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class ResearchObjectServiceImpl implements ResearchObjectService {
     private OrganizationDao organizationDao;
 
     @Override
-    public List<ResearchObjectResponse> getByFilter(String name, String organizationName, String date, String description, Integer paramCount) {
+    public List<ResearchObjectDTO> getByFilter(String name, String organizationName, String date, String description, Integer paramCount) {
 
         List<Integer> organizationId = new ArrayList<>();
 
@@ -39,7 +39,7 @@ public class ResearchObjectServiceImpl implements ResearchObjectService {
     }
 
     @Override
-    public List<ResearchObjectResponse> getAllResearchObjects() {
+    public List<ResearchObjectDTO> getAllResearchObjects() {
         return ResearchObjectConverter.convertToResearchObjectResponse(researchObjectDao.findAllResearchObjects(), organizationDao);
     }
 }
